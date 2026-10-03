@@ -18,6 +18,11 @@ jobs:
     # GitHub bizə müvəqqəti Ubuntu kompüteri verir
     runs-on: ubuntu-latest
 
+    # Test üçün saxta API key
+    # Real API key BURADA yazılmır!
+    env:
+      OPENAI_API_KEY: test-key
+
     steps:
 
       # 1. GitHub repository-dəki kodu götürür
@@ -40,4 +45,4 @@ jobs:
 
       # 4. Testləri işə salır
       - name: Testləri işə sal
-        run: pytest -q
+        run: python -m pytest -q
