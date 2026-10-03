@@ -1,0 +1,43 @@
+name: Mini LLMOps CI
+
+# Workflow nə vaxt işləsin?
+on:
+
+  # GitHub-a push ediləndə
+  push:
+
+  # Pull Request açılanda
+  pull_request:
+
+
+# Görüləcək işlər
+jobs:
+
+  test:
+
+    # GitHub bizə müvəqqəti Ubuntu kompüteri verir
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # 1. GitHub repository-dəki kodu götürür
+      - name: Repository-ni yüklə
+        uses: actions/checkout@v4
+
+
+      # 2. Python quraşdırır
+      - name: Python quraşdır
+        uses: actions/setup-python@v5
+
+        with:
+          python-version: "3.12"
+
+
+      # 3. Kitabxanaları quraşdırır
+      - name: Dependencies quraşdır
+        run: pip install -r requirements.txt
+
+
+      # 4. Testləri işə salır
+      - name: Testləri işə sal
+        run: pytest -q
